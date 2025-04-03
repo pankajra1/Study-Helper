@@ -1,0 +1,17 @@
+config:
+  target: "http://localhost:8080"
+  phases:
+    - duration: 60
+      arrivalRate: 50
+      name: "High load update user test"
+
+scenarios:
+  - name: "Update User Details"
+    flow:
+      - put:
+          url: "/nxt/api/user/12345"
+          json:
+            name: "Updated Name"
+            emailId: "updated.email@example.com"
+          expect:
+            - statusCode: 200

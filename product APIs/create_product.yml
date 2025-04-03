@@ -1,0 +1,21 @@
+config:
+  target: "http://localhost:8080"
+  phases:
+    - duration: 60
+      arrivalRate: 50
+      name: "High load product creation test"
+
+scenarios:
+  - name: "Create Product"
+    flow:
+      - post:
+          url: "/nxt/api/product/create"
+          json:
+            name: "Test Product"
+            description: "A sample product for testing"
+            productCode: "TP-001"
+            keygenServicePath: "/keygen"
+            requiresHardwareKey: false
+            activationMode: "online"
+          expect:
+            - statusCode: 201

@@ -1,0 +1,14 @@
+config:
+  target: "http://localhost:8080"
+  phases:
+    - duration: 60
+      arrivalRate: 50
+      name: "High load delete user test"
+
+scenarios:
+  - name: "Delete User"
+    flow:
+      - delete:
+          url: "/nxt/api/user/12345"
+          expect:
+            - statusCode: 200

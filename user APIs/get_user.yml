@@ -1,0 +1,14 @@
+config:
+  target: "http://localhost:8080"
+  phases:
+    - duration: 60
+      arrivalRate: 50
+      name: "High load get user test"
+
+scenarios:
+  - name: "Get User Details"
+    flow:
+      - get:
+          url: "/nxt/api/user/12345"
+          expect:
+            - statusCode: 200
